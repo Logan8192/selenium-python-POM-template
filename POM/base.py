@@ -1,4 +1,3 @@
-import unittest
 import os
 from pathlib import Path
 from selenium import webdriver
@@ -14,7 +13,8 @@ class Base:
         Starts a selenium web driver instance.
         :return: Driver instance.
         """
-        driver = webdriver.Firefox(executable_path="")
+        driver = webdriver.Firefox(
+            executable_path=str(Path(os.path.dirname(__file__)).parent / "drivers/linux/geckodriver"))
         driver.maximize_window()
         driver.get("https://duckduckgo.com")
         return driver

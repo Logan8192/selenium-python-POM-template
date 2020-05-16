@@ -1,3 +1,4 @@
+from selenium.webdriver import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
@@ -57,6 +58,15 @@ class Page:
         """
         element = self.find_element(locator, timeout)
         return True if element else False
+
+    def move_to_element(self, locator, timeout=10):
+        """
+        Move to an element.
+        :param locator: Locator of the element.
+        :param timeout: (int) Seconds to wait for the element.
+        """
+        element = self.find_element(locator, timeout)
+        ActionChains(self.driver).move_to_element(element).perform()
 
     def return_text_in_input(self, locator, timeout=10):
         """
