@@ -1,15 +1,15 @@
 import unittest
-from POM.base import Base
+import tests.testUtils as testUtils
 from POM.pages.home_page import HomePage
 
 
-class test_01_search(Base, unittest.TestCase):
-    driver = Base.start_driver()
+class test_01_search(unittest.TestCase):
+    driver = testUtils.start_driver()
 
     @classmethod
     def setUpClass(cls):
         cls.current_page = None
-        cls.data = Base.open_datafile("test_01.json")
+        cls.data = testUtils.open_datafile("test_01.json")
 
     def test_step_01_search_criteria(self):
         home_page = HomePage(self.driver)
@@ -53,6 +53,7 @@ class test_01_search(Base, unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.driver.close()
+        cls.driver.quit()
 
 
 if __name__ == "__main__":

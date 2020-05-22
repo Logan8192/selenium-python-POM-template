@@ -1,5 +1,5 @@
 # selenium-python-POM
-Page Object Model design pattern template using Python 3.8 and Selenium.
+Page Object Model design pattern template using Python 3.8, unittest framework and Selenium.
 
 ## Install Requirements:
 `` pip3 install -r requirements.txt ``
