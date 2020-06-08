@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-from ..page import Page
+from ..base_page import BasePage
 
 
 class SearchResultsPageLocators:
@@ -11,7 +11,7 @@ class SearchResultsPageLocators:
     TAB = "//li[@class='zcm__item']/a[text()='{}']"
 
 
-class SearchResultsPage(Page):
+class SearchResultsPage(BasePage):
 
     def are_page_results_displayed(self):
         """

@@ -3,14 +3,14 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
 
-class Page:
+class BasePage:
 
     def __init__(self, driver):
         self.driver = driver
 
     def click(self, locator, timeout=10):
         """
-        Click a given web element.
+        Clicks a given web element.
         :param locator: Locator of the element to click.
         :param timeout: (int) Seconds to wait for the element.
         """
@@ -39,7 +39,7 @@ class Page:
 
     def find_elements(self, locator, timeout=10):
         """
-        Find a group of element by a given locator.
+        Finds a group of element by a given locator.
         :param locator: Locator of the elements to find.
         :param timeout: (int) Seconds to wait for the elements.
         :return: Web elements found.
@@ -61,7 +61,7 @@ class Page:
 
     def move_to_element(self, locator, timeout=10):
         """
-        Move to an element.
+        Moves to an element.
         :param locator: Locator of the element.
         :param timeout: (int) Seconds to wait for the element.
         """
@@ -70,7 +70,7 @@ class Page:
 
     def return_text_in_input(self, locator, timeout=10):
         """
-        Return the text contained in a given input element.
+        Returns the text contained in a given input element.
         :param locator: Locator of the element.
         :param timeout: (int) Seconds to wait for the element.
         :return: Text contained in the input.
@@ -80,9 +80,9 @@ class Page:
 
     def return_element_text(self, locator):
         """
-        Return the text contained in a given element
+        Returns the text contained in a given element
         :param locator: Locator of the element.
-        :return: Element text.
+        :return: Text contained in the element.
         :rtype: string
         """
         return self.find_element(locator).text
@@ -91,7 +91,7 @@ class Page:
         """
         Waits for a given element for a given time in seconds.
         :param locator: Locator of the element.
-        :param timeout: Seconds to wait for the element.
+        :param timeout: (int) Seconds to wait for the element.
         """
         WebDriverWait(self.driver, timeout).until(
             expected_conditions.presence_of_element_located(locator),

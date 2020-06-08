@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-from ..page import Page
+from ..base_page import BasePage
 from ..pages.search_results_page import SearchResultsPage
 
 
@@ -8,7 +8,7 @@ class HomePageLocators:
     SEARCH_BUTTON = (By.CSS_SELECTOR, "#search_button_homepage")
 
 
-class HomePage(Page):
+class HomePage(BasePage):
 
     def is_page_loaded(self):
         """
@@ -20,7 +20,7 @@ class HomePage(Page):
 
     def fill_search_input(self, criteria):
         """
-        Search a given criteria.
+        Fills the search input.
         :param criteria: (string) Text to search.
         """
         self.fill_in(HomePageLocators.SEARCH_INPUT, criteria)
