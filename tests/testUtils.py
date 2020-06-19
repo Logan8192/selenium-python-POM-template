@@ -20,8 +20,9 @@ def start_driver():
         - Opera: OPERA_LINUX
 
     - Windows:
-        - Firefox: FIREFOX_WINDOWS
         - Chrome: CHROME_WINDOWS
+        - Firefox: FIREFOX_WINDOWS
+        - Opera: OPERA_WINDOWS
 
     :return: Driver instance.
     """
@@ -30,7 +31,7 @@ def start_driver():
     # Setting driver_name command-line argument.
     parser = argparse.ArgumentParser()
     parser.add_argument("--driver_name", type=str, choices=["CHROME_LINUX", "FIREFOX_LINUX", "OPERA_LINUX",
-                                                            "CHROME_WINDOWS", "FIREFOX_WINDOWS"],
+                                                            "CHROME_WINDOWS", "FIREFOX_WINDOWS", "OPERA_WINDOWS"],
                         dest="driver_name")
     driver_name = parser.parse_args().driver_name
 
@@ -55,6 +56,9 @@ def start_driver():
     elif driver_name == "CHROME_WINDOWS":
         driver = webdriver.Chrome(
             executable_path=str(Path(os.path.dirname(__file__)).parent / "drivers/windows/chromedriver.exe"))
+    elif driver_name == "OPERA_WINDOWS":
+        driver = webdriver.Opera(
+            executable_path=str(Path(os.path.dirname(__file__)).parent / "drivers/windows/operadriver.exe"))
     driver.maximize_window()
     driver.get("https://duckduckgo.com")
     return driver
