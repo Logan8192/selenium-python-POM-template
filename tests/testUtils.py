@@ -19,13 +19,17 @@ def start_driver():
         - Firefox: FIREFOX_LINUX
         - Opera: OPERA_LINUX
 
+    - Windows:
+        - Firefox: FIREFOX_WINDOWS
+
     :return: Driver instance.
     """
     driver = None
 
     # Setting driver_name command-line argument.
     parser = argparse.ArgumentParser()
-    parser.add_argument("--driver_name", type=str, choices=["CHROME_LINUX", "FIREFOX_LINUX", "OPERA_LINUX"],
+    parser.add_argument("--driver_name", type=str, choices=["CHROME_LINUX", "FIREFOX_LINUX", "OPERA_LINUX",
+                                                            "FIREFOX_WINDOWS"],
                         dest="driver_name")
     driver_name = parser.parse_args().driver_name
 
@@ -43,6 +47,10 @@ def start_driver():
     elif driver_name == "OPERA_LINUX":
         driver = webdriver.Opera(
             executable_path=str(Path(os.path.dirname(__file__)).parent / "drivers/linux/operadriver"))
+    elif driver_name == "FIREFOX_WINDOWS":
+        driver = webdriver.Firefox(
+            executable_path=str(Path(os.path.dirname(__file__)).parent / "drivers/windows/geckodriver.exe"),
+            log_path=Path(os.path.dirname(__file__)).parent / "drivers/windows/geckodriver.log")
     driver.maximize_window()
     driver.get("https://duckduckgo.com")
     return driver

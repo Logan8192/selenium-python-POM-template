@@ -16,6 +16,9 @@ with the following values:
     - **Chrome**: *CHROME_LINUX*
     - **Firefox**: *FIREFOX_LINUX*
     - **Opera**: *OPERA_LINUX*
+ 
+  - Windows:
+    - **Firefox**: *FIREFOX_WINDOWS* 
 
 **Example:**
 ``` 
