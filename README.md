@@ -19,6 +19,7 @@ with the following values:
  
   - Windows:
     - **Chrome**: *CHROME_WINDOWS*
+    - **Edge (Chromium)**: EDGE_CHROMIUM_WINDOWS
     - **Firefox**: *FIREFOX_WINDOWS*
     - **Opera**: *OPERA_WINDOWS*
 

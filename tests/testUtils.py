@@ -21,6 +21,7 @@ def start_driver():
 
     - Windows:
         - Chrome: CHROME_WINDOWS
+        - Edge (Chromium): EDGE_CHROMIUM_WINDOWS
         - Firefox: FIREFOX_WINDOWS
         - Opera: OPERA_WINDOWS
 
@@ -31,7 +32,8 @@ def start_driver():
     # Setting driver_name command-line argument.
     parser = argparse.ArgumentParser()
     parser.add_argument("--driver_name", type=str, choices=["CHROME_LINUX", "FIREFOX_LINUX", "OPERA_LINUX",
-                                                            "CHROME_WINDOWS", "FIREFOX_WINDOWS", "OPERA_WINDOWS"],
+                                                            "CHROME_WINDOWS", "EDGE_CHROMIUM_WINDOWS",
+                                                            "FIREFOX_WINDOWS", "OPERA_WINDOWS"],
                         dest="driver_name")
     driver_name = parser.parse_args().driver_name
 
@@ -59,6 +61,9 @@ def start_driver():
     elif driver_name == "OPERA_WINDOWS":
         driver = webdriver.Opera(
             executable_path=str(Path(os.path.dirname(__file__)).parent / "drivers/windows/operadriver.exe"))
+    elif driver_name == "EDGE_CHROMIUM_WINDOWS":
+        driver = webdriver.Edge(
+            executable_path=str(Path(os.path.dirname(__file__)).parent / "drivers/windows/msedgedriver.exe"))
     driver.maximize_window()
     driver.get("https://duckduckgo.com")
     return driver
