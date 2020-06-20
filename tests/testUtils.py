@@ -21,6 +21,7 @@ def start_driver():
 
     - Windows:
         - Firefox: FIREFOX_WINDOWS
+        - Chrome: CHROME_WINDOWS
 
     :return: Driver instance.
     """
@@ -29,7 +30,7 @@ def start_driver():
     # Setting driver_name command-line argument.
     parser = argparse.ArgumentParser()
     parser.add_argument("--driver_name", type=str, choices=["CHROME_LINUX", "FIREFOX_LINUX", "OPERA_LINUX",
-                                                            "FIREFOX_WINDOWS"],
+                                                            "CHROME_WINDOWS", "FIREFOX_WINDOWS"],
                         dest="driver_name")
     driver_name = parser.parse_args().driver_name
 
@@ -51,6 +52,9 @@ def start_driver():
         driver = webdriver.Firefox(
             executable_path=str(Path(os.path.dirname(__file__)).parent / "drivers/windows/geckodriver.exe"),
             log_path=Path(os.path.dirname(__file__)).parent / "drivers/windows/geckodriver.log")
+    elif driver_name == "CHROME_WINDOWS":
+        driver = webdriver.Chrome(
+            executable_path=str(Path(os.path.dirname(__file__)).parent / "drivers/windows/chromedriver.exe"))
     driver.maximize_window()
     driver.get("https://duckduckgo.com")
     return driver
