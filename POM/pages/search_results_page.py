@@ -46,7 +46,7 @@ class SearchResultsPage(BasePage):
 
     def is_page_loaded(self):
         """
-        Checks if the Home page is loaded by trying to find the search input element.
+        Checks if the Search Results page is loaded by trying to find the search input element.
         :return: True if the page is loaded.
         """
         return self.is_element_present(SearchResultsPageLocators.SEARCH_INPUT)
