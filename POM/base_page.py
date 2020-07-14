@@ -34,8 +34,9 @@ class BasePage:
         :return: Web element found.
         :rtype: webelement
         """
-        self.wait_for_element(locator, timeout)
-        return self.driver.find_element(*locator)
+        return WebDriverWait(self.driver, timeout).until(
+            expected_conditions.presence_of_element_located(locator),
+            message=f"Unable to locate the element: {locator} after {timeout} seconds.")
 
     def find_elements(self, locator, timeout=10):
         """
@@ -45,8 +46,9 @@ class BasePage:
         :return: Web elements found.
         :rtype: list
         """
-        self.wait_for_element(locator, timeout)
-        return self.driver.find_elements(*locator)
+        return WebDriverWait(self.driver, timeout).until(
+            expected_conditions.presence_of_all_elements_located(locator),
+            message=f"Unable to locate any element with the locator: {locator} after {timeout} seconds.")
 
     def is_element_present(self, locator, timeout=10):
         """
@@ -86,13 +88,3 @@ class BasePage:
         :rtype: string
         """
         return self.find_element(locator).text
-
-    def wait_for_element(self, locator, timeout=10):
-        """
-        Waits for a given element for a given time in seconds.
-        :param locator: Locator of the element.
-        :param timeout: (int) Seconds to wait for the element.
-        """
-        WebDriverWait(self.driver, timeout).until(
-            expected_conditions.presence_of_element_located(locator),
-            message=f"Unable to locate the element: {locator} after {timeout} seconds.")
