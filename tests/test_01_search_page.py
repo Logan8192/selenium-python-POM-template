@@ -1,6 +1,7 @@
 import unittest
-import tests.testUtils as testUtils
+import utils.driverUtils as testUtils
 from POM.pages.home_page import HomePage
+from utils import dataFileUtils
 
 
 class test_01_search(unittest.TestCase):
@@ -9,7 +10,7 @@ class test_01_search(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.current_page = None
-        cls.data = testUtils.open_datafile("test_01.json")
+        cls.data = dataFileUtils.open_datafile("test_01.json")
 
     def test_step_01_search_criteria(self):
         home_page = HomePage(self.driver)
