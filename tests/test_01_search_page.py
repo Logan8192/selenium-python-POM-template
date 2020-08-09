@@ -53,7 +53,6 @@ class test_01_search(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        cls.driver.close()
         cls.driver.quit()
 
 
