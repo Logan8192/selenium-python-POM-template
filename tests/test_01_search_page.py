@@ -1,11 +1,10 @@
 import unittest
-import utils.driverUtils as testUtils
 from POM.pages.home_page import HomePage
-from utils import dataFileUtils
+from utils import dataFileUtils, driverUtils
 
 
 class test_01_search(unittest.TestCase):
-    driver = testUtils.start_driver()
+    driver = driverUtils.start_driver()
 
     @classmethod
     def setUpClass(cls):
