@@ -1,4 +1,4 @@
-# selenium-python-POM
+# Python-Selenium-Unittest
 Page Object Model pattern template using Python 3.8, unittest framework and Selenium web driver.
 
 ## Install Requirements:
@@ -17,7 +17,7 @@ with the following values:
     - **Firefox**: *FIREFOX_LINUX*
     - **Opera**: *OPERA_LINUX*
  
-  - Windows:
+ - Windows:
     - **Chrome**: *CHROME_WINDOWS*
     - **Edge (Chromium)**: EDGE_CHROMIUM_WINDOWS
     - **Firefox**: *FIREFOX_WINDOWS*
